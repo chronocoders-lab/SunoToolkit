@@ -1,0 +1,23 @@
+{
+  "suno_cookie": "your_suno_ai_cookie_here",
+  "default_settings": {
+    "output_directory": "./data/output/songs",
+    "log_directory": "./data/output/logs",
+    "default_delay": 5000,
+    "default_music_genre": "pop",
+    "max_file_size_mb": 5,
+    "supported_formats": [".csv"],
+    "batch_size_limit": 100
+  },
+  "web_server": {
+    "default_port": 3000,
+    "default_host": "localhost",
+    "cors_enabled": true,
+    "max_upload_size": "5mb"
+  },
+  "api_settings": {
+    "timeout_ms": 300000,
+    "retry_attempts": 3,
+    "retry_delay_ms": 2000
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "name": "suno-toolkit",
+  "version": "1.0.0",
+  "description": "AI Müzik Üretim Araç Seti - Suno AI entegrasyonu ile müzik üretimi",
+  "main": "src/cli/index.js",
+  "bin": {
+    "suno-toolkit": "src/cli/index.js"
+  },
+  "scripts": {
+    "start": "node src/cli/index.js",
+    "web": "node src/cli/index.js web",
+    "batch": "node src/cli/index.js batch",
+    "generate": "node src/cli/index.js generate",
+    "dev": "nodemon src/web/server.js",
+    "setup": "node scripts/setup.js",
+    "install-windows": "scripts/install.bat",
+    "test": "echo \"Test suite henüz hazır değil\" && exit 1"
+  },
+  "keywords": [
+    "suno-ai",
+    "music-generation",
+    "ai",
+    "music",
+    "cli",
+    "web",
+    "batch-processing",
+    "türkçe"
+  ],
+  "author": "SunoToolkit Team",
+  "license": "MIT",
+  "dependencies": {
+    "boxen": "^5.1.2",
+    "chalk": "^4.1.2",
+    "commander": "^11.1.0",
+    "csv-parser": "^3.2.0",
+    "express": "^4.21.2",
+    "figlet": "^1.9.2",
+    "inquirer": "^8.2.7",
+    "multer": "^1.4.5-lts.1",
+    "ora": "^5.4.1",
+    "suno-ai": "^1.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/username/suno-toolkit.git"
+  },
+  "bugs": {
+    "url": "https://github.com/username/suno-toolkit/issues"
+  },
+  "homepage": "https://github.com/username/suno-toolkit#readme",
+  "directories": {
+    "doc": "docs"
+  },
+  "type": "commonjs"
+}

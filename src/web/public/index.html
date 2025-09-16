@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[ SunoToolkit ] - AI Müzik Üretim Terminali</title>
+    <link rel="stylesheet" href="cyberpunk.css">
+    <link href="https://fonts.googleapis.com/css2?family=Courier+New:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="terminal">
+        <!-- ASCII Header -->
+        <header class="terminal-header">
+            <pre class="ascii-logo">
+  ____                   _____           _ _    _ _   
+ / ___| _   _ _ __   ___ |_   _|__   ___ | | | _(_) |_ 
+ \___ \| | | | '_ \ / _ \  | |/ _ \ / _ \| | |/ / | __|
+  ___) | |_| | | | | (_) | | | (_) | (_) | |   <| | |_ 
+ |____/ \__,_|_| |_|\___/  |_|\___/ \___/|_|_|\_\_|\__|
+                                                      
+           [ AI MUZIK URETIM TERMINALI v1.0 ]         
+            </pre>
+            <div class="status-bar">
+                <span class="status-item">
+                    <span class="status-dot" id="statusDot"></span>
+                    <span id="statusText">SISTEM_BASLAT</span>
+                </span>
+                <span class="status-item">
+                    <span class="glitch" data-text="SUNO_AI">SUNO_AI</span>
+                </span>
+                <span class="status-item">
+                    <span id="timestamp"></span>
+                </span>
+            </div>
+        </header>
+
+        <!-- Main Terminal -->
+        <main class="terminal-body">
+            
+            <!-- Connection Panel -->
+            <section class="terminal-window" id="connectionPanel">
+                <div class="window-header">
+                    <span class="window-title">[BAGLANTI_DURUMU]</span>
+                    <div class="window-controls">
+                        <span class="control minimize">_</span>
+                        <span class="control maximize">[]</span>
+                        <span class="control close">X</span>
+                    </div>
+                </div>
+                <div class="window-content">
+                    <div class="connection-display">
+                        <pre id="connectionAscii">
+ ┌─────────────────────────────┐
+ │     SUNO AI BAGLANTISI      │
+ │                             │
+ │  Durum: [BAGLANTIYOR]       │
+ │  Kimlik: [BEKLENIYOR]       │
+ │  Limit:  [BILINMIYOR]       │
+ └─────────────────────────────┘
+                        </pre>
+                    </div>
+                    <div class="command-line">
+                        <span class="prompt">root@suno:~$</span>
+                        <button id="initBtn" class="cmd-button">[BAGLANTI_BASLAT]</button>
+                        <button id="statusBtn" class="cmd-button">[DURUM_KONTROL]</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Command Tabs -->
+            <section class="terminal-tabs">
+                <button class="tab-button active" data-tab="generate">
+                    <span class="tab-ascii">[TEK]</span> SARKI_URET
+                </button>
+                <button class="tab-button" data-tab="batch">
+                    <span class="tab-ascii">[TOPLU]</span> LISTE_ISLEM
+                </button>
+                <button class="tab-button" data-tab="lyrics">
+                    <span class="tab-ascii">[SOZ]</span> YAZI_URET
+                </button>
+                <button class="tab-button" data-tab="songs">
+                    <span class="tab-ascii">[DB]</span> SARKI_LISTE
+                </button>
+            </section>
+
+            <!-- Generate Panel -->
+            <section class="terminal-window tab-panel active" id="generate">
+                <div class="window-header">
+                    <span class="window-title">[TEK_SARKI_URETICI]</span>
+                </div>
+                <div class="window-content">
+                    <form id="generateForm">
+                        <div class="terminal-field">
+                            <label class="field-label">PROMPT_TIPI:</label>
+                            <select id="promptType" class="terminal-select">
+                                <option value="gpt">AI_ACIKLAMA</option>
+                                <option value="custom">OZEL_SOZLER</option>
+                            </select>
+                        </div>
+
+                        <div class="terminal-field">
+                            <label class="field-label">GIRIS_PROMPTU:</label>
+                            <textarea id="promptText" class="terminal-textarea" rows="3" 
+                                placeholder="> romantik_jazz_ayisigi_hakkinda"></textarea>
+                        </div>
+
+                        <div class="terminal-row">
+                            <div class="terminal-field half">
+                                <label class="field-label">MUZIK_TURU:</label>
+                                <select id="tags" class="terminal-select">
+                                    <option value="pop">POP</option>
+                                    <option value="rock">ROCK</option>
+                                    <option value="jazz">JAZZ</option>
+                                    <option value="blues">BLUES</option>
+                                    <option value="classical">KLASIK</option>
+                                    <option value="electronic">ELEKTRONIK</option>
+                                    <option value="hip hop">HIP_HOP</option>
+                                    <option value="country">COUNTRY</option>
+                                    <option value="folk">FOLK</option>
+                                    <option value="metal">METAL</option>
+                                </select>
+                            </div>
+                            <div class="terminal-field half">
+                                <label class="field-label">SARKI_ADI:</label>
+                                <input type="text" id="title" class="terminal-input" placeholder="isimsiz_sarki">
+                            </div>
+                        </div>
+
+                        <div class="terminal-field">
+                            <label class="terminal-checkbox">
+                                <input type="checkbox" id="instrumental">
+                                <span class="checkbox-custom"></span>
+                                ENSTRUMENTAL_MOD [SOZLER_YOK]
+                            </label>
+                        </div>
+
+                        <div class="command-line">
+                            <span class="prompt">uret@sarki:~$</span>
+                            <button type="submit" class="cmd-button primary" id="generateBtn">
+                                [URETIM_BASLAT]
+                            </button>
+                            <button type="reset" class="cmd-button">
+                                [TEMIZLE]
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Batch Panel -->
+            <section class="terminal-window tab-panel" id="batch">
+                <div class="window-header">
+                    <span class="window-title">[TOPLU_ISLEM_BIRIMI]</span>
+                </div>
+                <div class="window-content">
+                    <div class="info-panel">
+                        <pre class="info-ascii">
+ ┌─ CSV DOSYA FORMATI ──────────────────────┐
+ │ prompt,tags,make_instrumental,title      │
+ │ "jazz_sarkisi",jazz,false,"gece_jazz"    │
+ │ "rock_marsi",rock,false,"ozgurluk"       │
+ └──────────────────────────────────────────┘
+                        </pre>
+                    </div>
+
+                    <form id="batchForm" enctype="multipart/form-data">
+                        <div class="terminal-field">
+                            <label class="field-label">CSV_DOSYA_GIRISI:</label>
+                            <div class="file-drop-zone">
+                                <input type="file" id="csvFile" name="csvFile" accept=".csv" class="file-input">
+                                <label for="csvFile" class="file-label">
+                                    <pre class="drop-ascii">
+   ┌─────────────────────────┐
+   │   [CSV DOSYASINI AT]    │
+   │        VEYA             │
+   │    [TIKLA_VE_SEC]       │
+   └─────────────────────────┘
+                                    </pre>
+                                </label>
+                            </div>
+                            <div id="fileInfo" class="file-info" style="display: none;"></div>
+                        </div>
+
+                        <div class="terminal-field">
+                            <label class="field-label">ISTEK_GECIKMESI (ms):</label>
+                            <input type="number" id="delay" name="delay" class="terminal-input" 
+                                value="5000" min="1000" step="1000">
+                        </div>
+
+                        <div class="command-line">
+                            <span class="prompt">toplu@islem:~$</span>
+                            <button type="submit" class="cmd-button primary" id="batchBtn">
+                                [TOPLU_URETIM_BASLAT]
+                            </button>
+                            <button type="button" class="cmd-button" id="downloadSampleBtn">
+                                [ORNEK_CSV_INDIR]
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Lyrics Panel -->
+            <section class="terminal-window tab-panel" id="lyrics">
+                <div class="window-header">
+                    <span class="window-title">[SARKI_SOZU_URETICI]</span>
+                </div>
+                <div class="window-content">
+                    <form id="lyricsForm">
+                        <div class="terminal-field">
+                            <label class="field-label">SOZ_PROMPTU:</label>
+                            <textarea id="lyricsPrompt" class="terminal-textarea" rows="3"
+                                placeholder="> birini_ozleme_hakkinda_ask_sarkisi"></textarea>
+                        </div>
+
+                        <div class="command-line">
+                            <span class="prompt">yazi@uret:~$</span>
+                            <button type="submit" class="cmd-button primary" id="lyricsBtn">
+                                [SOZ_URET]
+                            </button>
+                        </div>
+                    </form>
+
+                    <div id="lyricsResult" class="result-terminal" style="display: none;">
+                        <div class="result-header">
+                            <span class="result-title">[URETILEN_SARKI_SOZU]</span>
+                            <button type="button" class="cmd-button small" id="copyLyricsBtn">
+                                [KOPYALA]
+                            </button>
+                        </div>
+                        <pre id="lyricsText" class="result-content"></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Songs Panel -->
+            <section class="terminal-window tab-panel" id="songs">
+                <div class="window-header">
+                    <span class="window-title">[SARKI_VERITABANI]</span>
+                </div>
+                <div class="window-content">
+                    <div class="command-line">
+                        <span class="prompt">db@sarki:~$</span>
+                        <button type="button" class="cmd-button primary" id="loadSongsBtn">
+                            [SARKILARI_YUKLE]
+                        </button>
+                    </div>
+
+                    <div id="songsContainer" class="songs-terminal">
+                        <div class="empty-display">
+                            <pre class="empty-ascii">
+ ┌─────────────────────────────┐
+ │                             │
+ │      [SARKI_BULUNAMADI]     │
+ │                             │
+ │   Yuklemek icin komutu      │
+ │      calistirin...          │
+ │                             │
+ └─────────────────────────────┘
+                            </pre>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Progress Modal -->
+            <div id="progressModal" class="modal-overlay">
+                <div class="progress-terminal">
+                    <div class="window-header">
+                        <span class="window-title" id="progressTitle">[ISLEM_DEVAM_EDIYOR]</span>
+                    </div>
+                    <div class="window-content">
+                        <div class="progress-display">
+                            <pre class="progress-ascii">
+ ┌─ ILERLEME ──────────────────┐
+ │ [████████████████████     ] │
+ │                             │
+ │ Status: <span id="progressText">85%</span>              │
+ └─────────────────────────────┘
+                            </pre>
+                        </div>
+                        <div id="progressMessage" class="progress-msg"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Terminal Notifications -->
+            <div id="notifications" class="terminal-notifications"></div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="terminal-footer">
+            <div class="footer-line">
+                <span class="footer-prompt">sistem@info:~$</span>
+                <span class="footer-text">[ Node.js <span id="nodeVersion"></span> ] [ Suno AI Integration ] [ 2025 SunoToolkit ]</span>
+            </div>
+        </footer>
+    </div>
+
+    <script src="cyberpunk.js"></script>
+</body>
+</html>
