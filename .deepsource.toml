@@ -7,9 +7,9 @@ name = "javascript"
   plugins = ["react"]
   environment = [
     "nodejs",
-    "jquery",
     "vitest",
     "jest",
+    "jquery",
     "jasmine"
   ]
 
