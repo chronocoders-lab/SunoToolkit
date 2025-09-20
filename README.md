@@ -5,12 +5,14 @@
 ## ✨ Özellikler
 
 ### 🎯 Temel Özellikler
+
 - **Tek Şarkı Üretimi** - İnteraktif CLI ile hızlı üretim
 - **Toplu Şarkı Üretimi** - CSV dosyalarından yüzlerce şarkı
 - **Web Arayüzü** - Modern, responsive web interface
 - **Şarkı Sözü Üretimi** - AI destekli lyrics üretimi
 
 ### 🛠️ Teknik Özellikler
+
 - **Cross-platform** - Windows, macOS, Linux desteği
 - **ASCII Art** - Güzel konsol çıktıları (emoji yok!)
 - **Logging** - Detaylı işlem logları
@@ -20,6 +22,7 @@
 ## 🚀 Hızlı Başlangıç
 
 ### 1. Kurulum
+
 ```bash
 # Projeyi indirin
 git clone https://github.com/username/suno-toolkit
@@ -33,7 +36,9 @@ npm run setup
 ```
 
 ### 2. Konfigürasyon
+
 `config/settings.json` dosyasını düzenleyin:
+
 ```json
 {
   "suno_cookie": "your_suno_ai_cookie_here"
@@ -41,6 +46,7 @@ npm run setup
 ```
 
 ### 3. İlk Şarkınızı Üretin
+
 ```bash
 # CLI ile
 node src/cli/index.js generate --prompt "romantic jazz song"
@@ -55,6 +61,7 @@ node src/cli/index.js web
 ### CLI Komutları
 
 #### Tek Şarkı Üretimi
+
 ```bash
 node src/cli/index.js generate [seçenekler]
 
@@ -65,6 +72,7 @@ node src/cli/index.js generate --prompt "rock anthem" --tags rock --title "Freed
 ```
 
 #### Toplu Şarkı Üretimi
+
 ```bash
 node src/cli/index.js batch --file data/templates/prompts.csv
 
@@ -76,11 +84,13 @@ node src/cli/index.js batch \
 ```
 
 #### Web Arayüzü
+
 ```bash
 node src/cli/index.js web --port 3000 --host localhost
 ```
 
 ### CSV Dosya Formatı
+
 ```csv
 prompt,tags,make_instrumental,title
 "romantic jazz song about love",jazz,false,"My Love Song"
@@ -89,6 +99,7 @@ prompt,tags,make_instrumental,title
 ```
 
 ### Web Arayüzü Özellikleri
+
 - 🎵 **Tek Şarkı Üretimi** - Form tabanlı müzik üretimi
 - 📦 **Toplu İşlem** - CSV drag & drop desteği
 - ✍️ **Şarkı Sözü** - AI destekli lyrics üretimi
@@ -115,6 +126,7 @@ SunoToolkit/
 ## ⚙️ Konfigürasyon
 
 ### Temel Ayarlar
+
 ```json
 {
   "suno_cookie": "cookie_buraya",
@@ -127,6 +139,7 @@ SunoToolkit/
 ```
 
 ### Web Sunucu Ayarları
+
 ```json
 {
   "web_server": {
@@ -142,24 +155,31 @@ SunoToolkit/
 ### Sık Karşılaşılan Hatalar
 
 #### Cookie Hatası
+
 ```
 HATA: Cookie bulunamadı!
 ```
+
 **Çözüm:** `config/settings.json` dosyasında `suno_cookie` alanını doldurun.
 
 #### Port Kullanımda Hatası
+
 ```
 HATA: Port 3000 kullanımda
 ```
+
 **Çözüm:** Farklı port kullanın: `--port 3001`
 
 #### CSV Format Hatası
+
 ```
 HATA: CSV dosyasında prompt alanı bulunamadı
 ```
+
 **Çözüm:** CSV başlıklarını kontrol edin: `prompt,tags,make_instrumental,title`
 
 ### Log Dosyaları
+
 - İşlem logları: `data/output/logs/`
 - Hata detayları: `data/output/logs/batch-errors-*.json`
 
