@@ -3,6 +3,7 @@
 ## CLI Komutları
 
 ### Temel Kullanım
+
 ```bash
 # Yardım
 node src/cli/index.js --help
@@ -18,6 +19,7 @@ node src/cli/index.js web --port 3000
 ```
 
 ### Generate Komutu
+
 ```bash
 node src/cli/index.js generate [seçenekler]
 
@@ -29,6 +31,7 @@ Seçenekler:
 ```
 
 ### Batch Komutu
+
 ```bash
 node src/cli/index.js batch [seçenekler]
 
@@ -39,6 +42,7 @@ Seçenekler:
 ```
 
 ### Web Komutu
+
 ```bash
 node src/cli/index.js web [seçenekler]
 
@@ -51,15 +55,16 @@ Seçenekler:
 
 CSV dosyalarınız şu sütunları içermelidir:
 
-| Sütun | Açıklama | Zorunlu |
-|-------|----------|---------|
-| prompt | Özel şarkı sözleri | Hayır |
-| gpt_description_prompt | GPT için açıklama | Evet |
-| tags | Müzik türü | Hayır |
-| make_instrumental | Enstrümantal (true/false) | Hayır |
-| title | Şarkı başlığı | Hayır |
+| Sütun                  | Açıklama                  | Zorunlu |
+| ---------------------- | ------------------------- | ------- |
+| prompt                 | Özel şarkı sözleri        | Hayır   |
+| gpt_description_prompt | GPT için açıklama         | Evet    |
+| tags                   | Müzik türü                | Hayır   |
+| make_instrumental      | Enstrümantal (true/false) | Hayır   |
+| title                  | Şarkı başlığı             | Hayır   |
 
 ### Örnek CSV:
+
 ```csv
 prompt,tags,make_instrumental,title
 "romantic jazz song about love",jazz,false,"My Love Song"

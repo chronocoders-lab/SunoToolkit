@@ -1,6 +1,5 @@
-
 module.exports = {
-    banner: `
+  banner: `
   ____                   _____           _ _    _ _   
  / ___| _   _ _ __   ___ |_   _|__   ___ | | | _(_) |_ 
  \\___ \\| | | | '_ \\ / _ \\  | |/ _ \\ / _ \\| | |/ / | __|
@@ -9,28 +8,28 @@ module.exports = {
                                                       
            AI Müzik Üretim Araç Seti v1.0            
 `,
-    
-    musicNote: `
+
+  musicNote: `
     ♪ ♫ ♪ ♫ ♪ ♫ ♪ ♫ ♪ ♫ ♪ ♫ ♪ ♫
     ♫                                ♪
     ♪        MÜZIK ÜRETİLİYOR        ♫
     ♫                                ♪
     ♪ ♫ ♪ ♫ ♪ ♫ ♪ ♫ ♪ ♫ ♪ ♫ ♪ ♫
 `,
-    
-    batchProcessing: `
+
+  batchProcessing: `
     ♪♫♪♫♪♫♪♫♪♫♪♫♪♫♪♫♪♫♪♫♪♫♪♫
     ♫                                    ♪
     ♪        TOPLU ÜRETİM BAŞLIYOR       ♫
     ♫                                    ♪
     ♪♫♪♫♪♫♪♫♪♫♪♫♪♫♪♫♪♫♪♫♪♫♪♫
 `,
-    
-    webServer: `
+
+  webServer: `
     ╔══════════════════════════════════════╗
     ║                                      ║
     ║         SUNO TOOLKIT WEB             ║
     ║                                      ║
     ╚══════════════════════════════════════╝
 `
-};
+}
