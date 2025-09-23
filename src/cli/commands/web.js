@@ -19,7 +19,7 @@ async function webCommand(options) {
     ================================================
         `));
 
-        logger.printInfo(`Web sunucu başlatılıyor...`);
+        logger.printInfo("Web sunucu başlatılıyor...");
         logger.printInfo(`Adres: http://${host}:${port}`);
         
         // Web server'ı başlat
