@@ -343,7 +343,7 @@ app.listen(PORT, HOST, () => {
     ================================================
     `));
     
-    console.log(chalk.green(`🚀 Web sunucu baslatildi!`));
+    console.log(chalk.green("🚀 Web sunucu baslatildi!"));
     console.log(chalk.blue(`📍 Adres: http://${HOST}:${PORT}`));
     console.log(chalk.yellow(`📁 Static dosyalar: ${path.join(__dirname, 'public')}`));
     console.log(chalk.gray(`🕐 Baslatma zamani: ${new Date().toLocaleString()}`));
