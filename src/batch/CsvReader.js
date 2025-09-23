@@ -73,9 +73,9 @@ class CsvReader {
 
         // Prompt metnini bul
         let promptText = '';
-        if (row.prompt && row.prompt.trim()) {
+        if (row.prompt?.trim()) {
             promptText = row.prompt.trim();
-        } else if (row.gpt_description_prompt && row.gpt_description_prompt.trim()) {
+        } else if (row.gpt_description_prompt?.trim()) {
             promptText = row.gpt_description_prompt.trim();
         }
 
