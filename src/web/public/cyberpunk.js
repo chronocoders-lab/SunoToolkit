@@ -255,7 +255,7 @@
             updateStatus('BAGLANTI_HATASI');
             updateConnectionAscii('HATA', 'BASARISIZ', 'BILINMIYOR');
             
-            if (error.message && error.message.includes('cookie')) {
+            if (error.message?.includes('cookie')) {
                 updateConnectionAscii('COOKIE_HATA', 'CONFIG_KONTROL', 'BILINMIYOR');
             }
         })

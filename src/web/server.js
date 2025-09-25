@@ -48,10 +48,10 @@ app.get('/api/status', async (req, res) => {
             uptime: process.uptime(),
             memory: process.memoryUsage(),
             nodeVersion: process.version,
-            sunoInitialized: sunoManager && sunoManager.isInitialized
+            sunoInitialized: sunoManager?.isInitialized
         };
 
-        if (sunoManager && sunoManager.isInitialized) {
+        if (sunoManager?.isInitialized) {
             try {
                 status.remainingLimit = await sunoManager.checkLimit();
             } catch (error) {
