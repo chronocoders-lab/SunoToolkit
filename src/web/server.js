@@ -343,12 +343,13 @@ app.listen(PORT, HOST, () => {
     ================================================
     `));
     
-    console.log(chalk.green(`🚀 Web sunucu baslatildi!`));
+    console.log(chalk.green('🚀 Web sunucu baslatildi!'));
     console.log(chalk.blue(`📍 Adres: http://${HOST}:${PORT}`));
     console.log(chalk.yellow(`📁 Static dosyalar: ${path.join(__dirname, 'public')}`));
     console.log(chalk.gray(`🕐 Baslatma zamani: ${new Date().toLocaleString()}`));
     console.log(chalk.gray(`📊 Node.js: ${process.version}`));
-    console.log(chalk.gray(`💾 Bellek: ${Math.round(process.memoryUsage().heapUsed / 1024 / 1024)} MB\n`));
+    console.log(chalk.gray(`💾 Bellek: ${Math.round(process.memoryUsage().heapUsed / 1024 / 1024)} MB
+`));
     
     console.log(chalk.blue('📋 Kullanilabilir Endpoint ler:'));
     console.log(chalk.white('  GET  /                    - Ana sayfa'));
