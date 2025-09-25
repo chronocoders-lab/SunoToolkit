@@ -19,18 +19,18 @@ class Logger {
     }
 
     // Tarih string'i üret
-    getDateString() {
+    static getDateString() {
         const now = new Date();
         return now.toISOString().split('T')[0]; // YYYY-MM-DD
     }
 
     // Zaman damgası
-    getTimestamp() {
+    static getTimestamp() {
         return new Date().toISOString();
     }
 
     // Log seviyesine göre renk
-    getColorByLevel(level) {
+    static getColorByLevel(level) {
         const colors = {
             'INFO': chalk.blue,
             'WARN': chalk.yellow,
@@ -86,7 +86,7 @@ class Logger {
     }
 
     // Başlık yazdır
-    printHeader(title) {
+    static printHeader(title) {
         const border = '='.repeat(60);
         console.log(chalk.cyan('\n' + border));
         console.log(chalk.cyan(`  ${title.toUpperCase()}`));
@@ -94,27 +94,27 @@ class Logger {
     }
 
     // Başarı mesajı
-    printSuccess(message) {
+    static printSuccess(message) {
         console.log(chalk.green('\n✅ ' + message));
     }
 
     // Hata mesajı
-    printError(message) {
+    static printError(message) {
         console.log(chalk.red('\n❌ ' + message));
     }
 
     // Uyarı mesajı
-    printWarning(message) {
+    static printWarning(message) {
         console.log(chalk.yellow('\n⚠️ ' + message));
     }
 
     // Bilgi mesajı
-    printInfo(message) {
+    static printInfo(message) {
         console.log(chalk.blue('\nℹ️ ' + message));
     }
 
     // İstatistik tablosu
-    printStats(stats) {
+    static printStats(stats) {
         console.log(chalk.blue('\n📊 İstatistikler:'));
         console.log(chalk.gray('-'.repeat(30)));
         
@@ -126,7 +126,7 @@ class Logger {
     }
 
     // İlerleme çubuğu için konsol temizle
-    clearLine() {
+    static clearLine() {
         process.stdout.write('\r\x1b[K');
     }
 
