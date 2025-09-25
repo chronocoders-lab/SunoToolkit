@@ -102,7 +102,7 @@ class CsvReader {
     }
 
     // Boolean parse et
-    parseBoolean(value) {
+    static parseBoolean(value) {
         if (typeof value === 'boolean') return value;
         if (typeof value === 'string') {
             const lowercased = value.toLowerCase().trim();
@@ -179,7 +179,7 @@ class CsvReader {
     }
 
     // CSV formatı hakkında yardım göster
-    showCsvHelp() {
+    static showCsvHelp() {
         console.log(chalk.blue('\n📋 CSV Dosya Formatı Rehberi:'));
         console.log(chalk.gray('='.repeat(50)));
         

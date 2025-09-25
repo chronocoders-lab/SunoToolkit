@@ -132,7 +132,7 @@ class CLIPrompts {
     }
 
     // Üretim öncesi onay ekranı
-    async showGenerateConfirmation(options) {
+    static async showGenerateConfirmation(options) {
         console.log(chalk.blue('\n📋 Şarkı Üretim Özeti:\n'));
         console.log(chalk.gray('─'.repeat(50)));
         
@@ -160,7 +160,7 @@ class CLIPrompts {
     }
 
     // Batch işlemi için prompts
-    async getBatchOptions() {
+    static async getBatchOptions() {
         console.log(chalk.blue('\n📦 Toplu Şarkı Üretimi Ayarları\n'));
 
         const questions = [
@@ -215,7 +215,7 @@ class CLIPrompts {
     }
 
     // CSV preview göster
-    async showCsvPreview(filePath) {
+    static async showCsvPreview(filePath) {
         try {
             const content = await fs.readFile(filePath, 'utf8');
             const lines = content.split('\n').filter(line => line.trim());
@@ -245,7 +245,7 @@ class CLIPrompts {
     }
 
     // Web server ayarları
-    async getWebServerOptions() {
+    static async getWebServerOptions() {
         console.log(chalk.blue('\n🌐 Web Server Ayarları\n'));
 
         return await inquirer.prompt([
@@ -283,7 +283,7 @@ class CLIPrompts {
     }
 
     // Cookie setup prompts
-    async getCookieSetup() {
+    static async getCookieSetup() {
         console.log(chalk.blue('\n🍪 Suno AI Cookie Kurulumu\n'));
         
         console.log(chalk.yellow('Suno AI cookie almak için:'));
@@ -328,7 +328,7 @@ class CLIPrompts {
     }
 
     // Exit confirmation
-    async confirmExit() {
+    static async confirmExit() {
         return await inquirer.prompt([
             {
                 type: 'confirm',
@@ -340,7 +340,7 @@ class CLIPrompts {
     }
 
     // Loading spinner ile birlikte prompt
-    async promptWithSpinner(questions, spinnerText) {
+    static async promptWithSpinner(questions, spinnerText) {
         const ora = require('ora');
         const spinner = ora(spinnerText).start();
         
@@ -352,7 +352,7 @@ class CLIPrompts {
     }
 
     // Multiple choice with search
-    async searchableList(message, choices, pageSize = 10) {
+    static async searchableList(message, choices, pageSize = 10) {
         return await inquirer.prompt([
             {
                 type: 'list',
@@ -366,7 +366,7 @@ class CLIPrompts {
     }
 
     // Progress confirmation
-    async showProgress(current, total, item) {
+    static async showProgress(current, total, item) {
         const percentage = Math.round((current / total) * 100);
         const progressBar = '█'.repeat(Math.floor(percentage / 5)) + 
                            '░'.repeat(20 - Math.floor(percentage / 5));

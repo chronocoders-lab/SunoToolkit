@@ -233,7 +233,7 @@ class SunoManager {
     }
 
     // Yardımcı fonksiyonlar
-    sleep(ms) {
+    static sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
 }

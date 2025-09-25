@@ -10,7 +10,7 @@ class FileManager {
     }
 
     // Dosya varlığını kontrol et
-    async fileExists(filePath) {
+    static async fileExists(filePath) {
         try {
             await fs.access(filePath);
             return true;
@@ -117,7 +117,7 @@ class FileManager {
     }
 
     // Dosya boyutunu formatla
-    formatFileSize(bytes) {
+    static formatFileSize(bytes) {
         if (bytes === 0) return '0 Bytes';
         const k = 1024;
         const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
@@ -340,7 +340,7 @@ class FileManager {
     }
 
     // Dosya izinlerini kontrol et
-    async checkPermissions(filePath) {
+    static async checkPermissions(filePath) {
         try {
             const stats = await fs.stat(filePath);
             
