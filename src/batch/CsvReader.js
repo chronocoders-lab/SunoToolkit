@@ -66,17 +66,17 @@ class CsvReader {
     // Satırı parse et ve prompt objesi oluştur
     parseRow(row) {
         // Boş satırları atla
-        const values = Object.values(row).filter(val => val && val.toString().trim());
+        const values = Object.values(row).filter(val => val?.toString().trim());
         if (values.length === 0) {
             return null;
         }
 
         // Prompt metnini bul
         let promptText = '';
-        if (row.prompt && row.prompt.trim()) {
-            promptText = row.prompt.trim();
-        } else if (row.gpt_description_prompt && row.gpt_description_prompt.trim()) {
-            promptText = row.gpt_description_prompt.trim();
+        if (row.prompt?.trim()) {
+            promptText = row.prompt?.trim();
+        } else if (row.gpt_description_prompt?.trim()) {
+            promptText = row.gpt_description_prompt?.trim();
         }
 
         if (!promptText) {
