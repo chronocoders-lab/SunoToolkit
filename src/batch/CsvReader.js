@@ -10,7 +10,7 @@ class CsvReader {
   }
 
   // CSV dosyasından promptları okur
-  async readPrompts(filePath) {
+  readPrompts(filePath) {
     return new Promise((resolve, reject) => {
       const prompts = [];
       const requiredFields = ["prompt", "gpt_description_prompt"];
@@ -27,7 +27,7 @@ class CsvReader {
           }),
         )
         .on("headers", (headers) => {
-          console.log(chalk.gray("📋 Bulunan sütunlar: " + headers.join(", ")));
+          console.log(chalk.gray(`📋 Bulunan sütunlar: ${headers.join(", ")}`));
 
           // Gerekli alanlardan en az birinin olup olmadığını kontrol et
           const hasPromptField = headers.some((h) =>
@@ -77,7 +77,7 @@ class CsvReader {
   parseRow(row) {
     // Boş satırları atla
     const values = Object.values(row).filter(
-      (val) => val && val.toString().trim(),
+      (val) => val?.toString().trim(),
     );
     if (values.length === 0) {
       return null;
@@ -85,11 +85,10 @@ class CsvReader {
 
     // Prompt metnini bul
     let promptText = "";
-    if (row.prompt && row.prompt.trim()) {
+    if (row.prompt?.trim()) {
       promptText = row.prompt.trim();
     } else if (
-      row.gpt_description_prompt &&
-      row.gpt_description_prompt.trim()
+      row.gpt_description_prompt?.trim()
     ) {
       promptText = row.gpt_description_prompt.trim();
     }

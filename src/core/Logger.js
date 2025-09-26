@@ -61,7 +61,7 @@ class Logger {
 
     // Dosyaya yaz
     try {
-      await fs.appendFile(this.logFile, logMessage + "\n");
+      await fs.appendFile(this.logFile, `${logMessage}\n`);
     } catch (error) {
       console.error(chalk.red("Log yazma hatası:"), error.message);
     }
@@ -89,32 +89,38 @@ class Logger {
   }
 
   // Başlık yazdır
-  static printHeader(title) {
-    const border = "=".repeat(60);
-    console.log(chalk.cyan("\n" + border));
-    console.log(chalk.cyan(`  ${title.toUpperCase()}`));
-    console.log(chalk.cyan(border + "\n"));
-  }
+    static printHeader(title) {
+      const border = "=".repeat(60);
+      console.log(chalk.cyan(`
+  ${border}`));
+      console.log(chalk.cyan(`  ${title.toUpperCase()}`));
+      console.log(chalk.cyan(`${border}
+  `));
+    }
 
   // Başarı mesajı
-  static printSuccess(message) {
-    console.log(chalk.green("\n✅ " + message));
-  }
+    static printSuccess(message) {
+      console.log(chalk.green(`
+  ✅ ${message}`));
+    }
 
   // Hata mesajı
-  static printError(message) {
-    console.log(chalk.red("\n❌ " + message));
-  }
+    static printError(message) {
+      console.log(chalk.red(`
+  ❌ ${message}`));
+    }
 
   // Uyarı mesajı
-  static printWarning(message) {
-    console.log(chalk.yellow("\n⚠️ " + message));
-  }
+    static printWarning(message) {
+      console.log(chalk.yellow(`
+  ⚠️ ${message}`));
+    }
 
   // Bilgi mesajı
-  static printInfo(message) {
-    console.log(chalk.blue("\nℹ️ " + message));
-  }
+    static printInfo(message) {
+      console.log(chalk.blue(`
+  ℹ️ ${message}`));
+    }
 
   // İstatistik tablosu
   static printStats(stats) {

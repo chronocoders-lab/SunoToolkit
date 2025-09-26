@@ -188,7 +188,7 @@ class CLIPrompts {
     console.log(chalk.white("Çıktı: ") + chalk.yellow(options.output));
     console.log(chalk.gray("─".repeat(50)));
 
-    return await inquirer.prompt([
+    return inquirer.prompt([
       {
         type: "confirm",
         name: "confirm",
@@ -250,7 +250,7 @@ class CLIPrompts {
       },
     ];
 
-    return await inquirer.prompt(questions);
+    return inquirer.prompt(questions);
   }
 
   // CSV preview göster
@@ -265,13 +265,10 @@ class CLIPrompts {
       // İlk 5 satırı göster
       lines.slice(0, 5).forEach((line, index) => {
         if (index === 0) {
-          console.log(chalk.yellow("BAŞLIKLAR: ") + chalk.white(line));
+          console.log(`${chalk.yellow("BAŞLIKLAR: ")}${chalk.white(line)}`);
         } else {
           console.log(
-            chalk.gray(`${index}. `) +
-              chalk.green(
-                line.substring(0, 80) + (line.length > 80 ? "..." : ""),
-              ),
+            `${chalk.gray(`${index}. `)}${chalk.green(`${line.substring(0, 80)}${line.length > 80 ? "..." : ""}`)}`,
           );
         }
       });
@@ -283,7 +280,7 @@ class CLIPrompts {
       console.log(chalk.gray("─".repeat(60)));
       console.log(chalk.blue(`Toplam: ${lines.length - 1} şarkı\n`));
     } catch (error) {
-      console.log(chalk.red("CSV önizleme hatası: " + error.message));
+      console.log(chalk.red(`CSV önizleme hatası: ${error.message}`));
     }
   }
 
@@ -291,7 +288,7 @@ class CLIPrompts {
   static async getWebServerOptions() {
     console.log(chalk.blue("\n🌐 Web Server Ayarları\n"));
 
-    return await inquirer.prompt([
+    return inquirer.prompt([
       {
         type: "number",
         name: "port",
@@ -337,7 +334,7 @@ class CLIPrompts {
     console.log(chalk.gray('5. "__clerk_api_version" içeren isteği bulun'));
     console.log(chalk.gray("6. Headers > Cookie değerini kopyalayın\n"));
 
-    return await inquirer.prompt([
+    return inquirer.prompt([
       {
         type: "input",
         name: "suno_cookie",
@@ -347,21 +344,21 @@ class CLIPrompts {
           if (input.length < 50) return "Cookie çok kısa, kontrol edin!";
           return true;
         },
-        transformer: (input) => chalk.green("*".repeat(20) + "..."),
+        transformer: () => chalk.green(`${"*".repeat(20)}...`),
       },
       {
         type: "input",
         name: "session_id",
         message: "Session ID (opsiyonel):",
         transformer: (input) =>
-          input ? chalk.green("*".repeat(10) + "...") : chalk.gray("(boş)"),
+          input ? chalk.green(`${"*".repeat(10)}...`) : chalk.gray("(boş)"),
       },
       {
         type: "input",
         name: "twocaptcha_key",
         message: "2Captcha API Key (opsiyonel):",
         transformer: (input) =>
-          input ? chalk.green("*".repeat(15) + "...") : chalk.gray("(boş)"),
+          input ? chalk.green(`${"*".repeat(15)}...`) : chalk.gray("(boş)"),
       },
       {
         type: "confirm",
@@ -374,7 +371,7 @@ class CLIPrompts {
 
   // Exit confirmation
   static async confirmExit() {
-    return await inquirer.prompt([
+    return inquirer.prompt([
       {
         type: "confirm",
         name: "exit",
@@ -393,12 +390,12 @@ class CLIPrompts {
       spinner.stop();
     }, 1000);
 
-    return await inquirer.prompt(questions);
+    return inquirer.prompt(questions);
   }
 
   // Multiple choice with search
   static async searchableList(message, choices, pageSize = 10) {
-    return await inquirer.prompt([
+    return inquirer.prompt([
       {
         type: "list",
         name: "selected",
@@ -411,7 +408,7 @@ class CLIPrompts {
   }
 
   // Progress confirmation
-  static async showProgress(current, total, item) {
+  static showProgress(current, total, item) {
     const percentage = Math.round((current / total) * 100);
     const progressBar =
       "█".repeat(Math.floor(percentage / 5)) +
