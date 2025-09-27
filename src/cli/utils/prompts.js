@@ -149,7 +149,7 @@ class CLIPrompts {
         console.log(chalk.white('Çıktı: ') + chalk.yellow(options.output));
         console.log(chalk.gray('─'.repeat(50)));
 
-        return await inquirer.prompt([
+        return inquirer.prompt([
             {
                 type: 'confirm',
                 name: 'confirm',
@@ -211,7 +211,7 @@ class CLIPrompts {
             }
         ];
 
-        return await inquirer.prompt(questions);
+        return inquirer.prompt(questions);
     }
 
     // CSV preview göster
@@ -248,7 +248,7 @@ class CLIPrompts {
     async getWebServerOptions() {
         console.log(chalk.blue('\n🌐 Web Server Ayarları\n'));
 
-        return await inquirer.prompt([
+        return inquirer.prompt([
             {
                 type: 'number',
                 name: 'port',
@@ -294,7 +294,7 @@ class CLIPrompts {
         console.log(chalk.gray('5. "__clerk_api_version" içeren isteği bulun'));
         console.log(chalk.gray('6. Headers > Cookie değerini kopyalayın\n'));
 
-        return await inquirer.prompt([
+        return inquirer.prompt([
             {
                 type: 'input',
                 name: 'suno_cookie',
@@ -329,7 +329,7 @@ class CLIPrompts {
 
     // Exit confirmation
     async confirmExit() {
-        return await inquirer.prompt([
+        return inquirer.prompt([
             {
                 type: 'confirm',
                 name: 'exit',
@@ -348,12 +348,12 @@ class CLIPrompts {
             spinner.stop();
         }, 1000);
         
-        return await inquirer.prompt(questions);
+        return inquirer.prompt(questions);
     }
 
     // Multiple choice with search
     async searchableList(message, choices, pageSize = 10) {
-        return await inquirer.prompt([
+        return inquirer.prompt([
             {
                 type: 'list',
                 name: 'selected',
